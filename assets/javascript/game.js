@@ -43,10 +43,10 @@ function startGame () {
    }
 
    // Change HTML to reflect round conditions
-   document.getElementById("wordToGuess").innerHTML = blanksAndSucesses.join("");
-   document.getElementById("numGuesses").innerHTML = guessesLeft;
-   document.getElementById("winCounter").innerHTML = winCount
-   document.getElementById("lossCounter").innerHTML = lossCount
+   //document.getElementById("wordToGuess").innerHTML = blanksAndSucesses.join("");
+   //document.getElementById("numGuesses").innerHTML = guessesLeft;
+  // document.getElementById("winCounter").innerHTML = winCount
+  // document.getElementById("lossCounter").innerHTML = lossCount
 
 
    // Testing / Debugging
@@ -86,13 +86,14 @@ function checkLetters(letter) {
 
 }
 
-function roundComplete(){
+function roundComplete() {
     console.log("Win Count: " + winCount + " | Loss Count: " + lossCount + " | Guesses Left" + guessesLeft);
 
     // Update the HTML to reflect the most recent count stats
     document.getElementById("numGuesses").innerHTML = guessesLeft;
     document.getElementById("wordToGuess").innerHTML = blanksAndSucesses.join(" ");
     document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" ");
+    startGame();
 
     // Check if user won
     if (lettersinWord.toString() == blanksAndSucesses.toString()) {
@@ -123,10 +124,11 @@ function roundComplete(){
 startGame();
 
 // Register Keyclicks
-document.onkeyup = function(event) {
+document.onkeyup = function(event){
     var lettereGuessed = String.fromCharCode(event.keyCode).toLowerCase();
     checkLetters(lettereGuessed);
     roundComplete();
+    
 
    
     // Testing / Debugging
